@@ -6,9 +6,9 @@ class Program
     {
         string[] tarefas_pendentes = new string[10];
         string[] tarefas_concluidas = new string[10];
-        bool bglh_dd = true;
+      
 
-        while (bglh_dd)
+        while (true)
         {
 
             Console.WriteLine("===== GERENCIADOR DE TAREFAS =====");
@@ -161,7 +161,7 @@ class Program
             else if (opcao == "5" || opcao.ToLower() == "sair so sistema")
             {
                 Console.WriteLine("É nois, tmj cria");
-                bglh_dd = false;
+                break;
 
             }
             else
