@@ -1,15 +1,15 @@
 using System.IO;
 
-class AlunoTXT
+class CadastroTXT
 {
     static void Main()
     {
         string arquivo = "aluno.txt";
-        Console.Clear();
-        Console.WriteLine("Sistema de Alunos .txt\n Pressione qualquer tecla para entrar...");
+        Console.WriteLine("Cadastro de Alunos");
 
         for (int i = 0; i < 10; i++)
         {
+            Console.WriteLine("Pressione qualquer tecla para entrar...");
             Console.ReadKey();
             Console.Clear();
             Console.Write($"Digite o nome do Aluno {i + 1}: ");
@@ -20,20 +20,24 @@ class AlunoTXT
             string curso = Console.ReadLine();
             Console.Clear();
             File.AppendAllText(arquivo, $"\n Nome: {nome}  |  Idade: {idade}  | Curso: {curso}  ");
-            Console.WriteLine ("Adicionado com sucesso!");
-            Console.WriteLine("Deseja continuar? 1 - Sim  |  2 - Não\n Resposta: ");
+            Console.WriteLine("Adicionado com sucesso!");
+            Console.WriteLine("Deseja continuar? 1 - Sim  |  2 - Não\nResposta: ");
             int stop = int.Parse(Console.ReadLine());
+
             if (stop == 1)
             {
-                i = i;
+                continue;
 
             }
-            else
+            else if (stop == 2) 
             {
                 Console.WriteLine("Até Mais!");
                 break;
             }
-
+            else
+            {
+                Console.WriteLine("Opção inválida");
+            }
 
 
 
