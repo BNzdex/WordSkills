@@ -15,5 +15,6 @@ class Program
         Console.WriteLine("Qual dessas opções você deseja excluir ? ");
         int escolha = int.Parse(Console.ReadLine());
         File.Delete(arquivos[escolha - 1]);
+        Console.Write("Arquivo deletado com sucesso!");
     }
 }
