@@ -1,0 +1,4 @@
+
+ Nome: Bernardo  |  Idade: 30  | Curso: DDS  
+ Nome: Carlos  |  Idade: 1  | Curso: Informática básica  
+ Nome: Gabriella  |  Idade: 4  | Curso: Mecânica  
