@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 class Aluno
 { 
@@ -33,7 +33,18 @@ class Aluno
         for (int i = 0; i < quantidade_cadastros; i++)
         {
             Console.WriteLine($"{i + 1}° Aluno: {nome[i]}");
-
+            if (notas[i] < 7)
+                situacao_nota[i] == "Reprovado"
+            else
+                situacao_nota[i] == "Aprovado"
+            
+            if (faltas[i] < 5)
+                situacao_faltas[i] == "Regular"
+            else
+                situacao_faltas[i] == "Irregular"
+            
+            Console.Write($"Status Nota: {situacao_nota[i]}");
+            Console.Write($"Status Faltas: {situacao_faltas[i]}");
         }
 
         return (situacao_nota, situacao_faltas);
