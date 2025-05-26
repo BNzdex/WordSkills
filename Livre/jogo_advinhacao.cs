@@ -36,13 +36,13 @@ class Jogo
             Console.WriteLine("Opção inválida. Usando nível fácil por padrão.");
             tentativas = 20;
         }
+        Console.Clear();
 
         return tentativas;
     }
 
     static int PedeChute()
     {
-        Console.Clear();
         Console.Write("Digite um número entre 1 e 1000: ");
         int chute = int.Parse(Console.ReadLine());
         return chute;
