@@ -1,7 +1,7 @@
 using System;
 
 class Aluno
-{ 
+{
     static (string[] nome, int[] faltas, int[] nota, int quantidade_cadastros) cadastro_aluno()
     {
         string[] nome = new string[5];
@@ -19,13 +19,14 @@ class Aluno
             faltas[i] = int.Parse(Console.ReadLine());
             Console.Write($"Digite a nota final do {i + 1}° Aluno: ");
             nota[i] = int.Parse(Console.ReadLine());
-            Console.WriteLine("Aluno cadastrado com sucesso!");
+            Console.WriteLine("Aluno cadastrado com sucesso!\n");
+
         }
         return (nome, faltas, nota, quantidade_cadastros);
-        
+
 
     }
-    static (string[] situacao_nota, string[] situacao_faltas) relatorio(string[] nome, int[] notas, int[] faltas, int quantidade_cadastros)
+    static (string[] situacao_nota, string[] situacao_faltas, int alunos_reprovados) relatorio(string[] nome, int[] notas, int[] faltas, int quantidade_cadastros)
     {
         string[] situacao_nota = new string[5];
         string[] situacao_faltas = new string[5];
@@ -34,19 +35,41 @@ class Aluno
         {
             Console.WriteLine($"{i + 1}° Aluno: {nome[i]}");
             if (notas[i] < 7)
-                situacao_nota[i] == "Reprovado"
+                situacao_nota[i] = "Reprovado";
+
             else
-                situacao_nota[i] == "Aprovado"
-            
+                situacao_nota[i] = "Aprovado";
+
+
             if (faltas[i] < 5)
-                situacao_faltas[i] == "Regular"
+                situacao_faltas[i] = "Regular";
+
             else
-                situacao_faltas[i] == "Irregular"
-            
-            Console.Write($"Status Nota: {situacao_nota[i]}");
-            Console.Write($"Status Faltas: {situacao_faltas[i]}");
+                situacao_faltas[i] = "Irregular";
+
+            Console.WriteLine($"Status Nota: {situacao_nota[i]}");
+            Console.WriteLine($"Status Faltas: {situacao_faltas[i]}");
+        }
+        int alunos_reprovados = 0;
+        for (int i = 0;i < quantidade_cadastros; i++)
+        {
+            if (situacao_nota[i] == "Reprovado")
+            {
+                alunos_reprovados++;
+            }
+            else if (situacao_faltas[i] == "Irregular")
+            {
+                alunos_reprovados++;
+            }
         }
 
-        return (situacao_nota, situacao_faltas);
+        return (situacao_nota, situacao_faltas, alunos_reprovados);
+    }
+    static void Main()
+    {
+            var (nome, faltas, notas, quantidade_cadastros) = cadastro_aluno();
+            var (situacao_nota, situacao_faltas, alunos_reprovados) = relatorio(nome, notas, faltas, quantidade_cadastros);
+
+            Console.WriteLine($"\nTotal de alunos reprovados: {alunos_reprovados}");
     }
 }
