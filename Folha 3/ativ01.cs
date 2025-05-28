@@ -1,75 +1,70 @@
 using System;
+using System.Collections.Generic;
 
 class Aluno
 {
-    static (string[] nome, int[] faltas, int[] nota, int quantidade_cadastros) cadastro_aluno()
+    static (List<string> nomes, List<int> faltas, List<int> notas, int quantidadeCadastros) CadastroAluno()
     {
-        string[] nome = new string[5];
-        int[] faltas = new int[5];
-        int[] nota = new int[5];
+        var nomes = new List<string>();
+        var faltas = new List<int>();
+        var notas = new List<int>();
 
         Console.WriteLine("Deseja cadastrar quantos alunos (de 1 a 5)? ");
-        int quantidade_cadastros = int.Parse(Console.ReadLine());
+        int quantidadeCadastros = int.Parse(Console.ReadLine());
 
-        for (int i = 0; i < quantidade_cadastros; i++)
+        for (int i = 0; i < quantidadeCadastros; i++)
         {
             Console.Write($"Digite o nome do {i + 1}° Aluno: ");
-            nome[i] = Console.ReadLine();
+            nomes.Add(Console.ReadLine());
+
             Console.Write($"Digite a quantidade de faltas do {i + 1}° Aluno: ");
-            faltas[i] = int.Parse(Console.ReadLine());
+            faltas.Add(int.Parse(Console.ReadLine()));
+
             Console.Write($"Digite a nota final do {i + 1}° Aluno: ");
-            nota[i] = int.Parse(Console.ReadLine());
+            notas.Add(int.Parse(Console.ReadLine()));
+
             Console.WriteLine("Aluno cadastrado com sucesso!\n");
-
         }
-        return (nome, faltas, nota, quantidade_cadastros);
 
-
+        return (nomes, faltas, notas, quantidadeCadastros);
     }
-    static (string[] situacao_nota, string[] situacao_faltas, int alunos_reprovados) relatorio(string[] nome, int[] notas, int[] faltas, int quantidade_cadastros)
+
+    static (List<string> situacaoNota, List<string> situacaoFaltas, int alunosReprovados) Relatorio(
+        List<string> nomes, List<int> notas, List<int> faltas, int quantidadeCadastros)
     {
-        string[] situacao_nota = new string[5];
-        string[] situacao_faltas = new string[5];
+        var situacaoNota = new List<string>();
+        var situacaoFaltas = new List<string>();
+        int alunosReprovados = 0;
 
-        for (int i = 0; i < quantidade_cadastros; i++)
+        for (int i = 0; i < quantidadeCadastros; i++)
         {
-            Console.WriteLine($"{i + 1}° Aluno: {nome[i]}");
+            Console.WriteLine($"{i + 1}° Aluno: {nomes[i]}");
+
             if (notas[i] < 7)
-                situacao_nota[i] = "Reprovado";
-
+                situacaoNota.Add("Reprovado");
             else
-                situacao_nota[i] = "Aprovado";
-
+                situacaoNota.Add("Aprovado");
 
             if (faltas[i] < 5)
-                situacao_faltas[i] = "Regular";
-
+                situacaoFaltas.Add("Regular");
             else
-                situacao_faltas[i] = "Irregular";
+                situacaoFaltas.Add("Irregular");
 
-            Console.WriteLine($"Status Nota: {situacao_nota[i]}");
-            Console.WriteLine($"Status Faltas: {situacao_faltas[i]}");
-        }
-        int alunos_reprovados = 0;
-        for (int i = 0;i < quantidade_cadastros; i++)
-        {
-            if (situacao_nota[i] == "Reprovado")
-            {
-                alunos_reprovados++;
-            }
-            else if (situacao_faltas[i] == "Irregular")
-            {
-                alunos_reprovados++;
-            }
+            Console.WriteLine($"Status Nota: {situacaoNota[i]}");
+            Console.WriteLine($"Status Faltas: {situacaoFaltas[i]}");
+
+            if (situacaoNota[i] == "Reprovado" || situacaoFaltas[i] == "Irregular")
+                alunosReprovados++;
         }
 
-        return (situacao_nota, situacao_faltas, alunos_reprovados);
+        return (situacaoNota, situacaoFaltas, alunosReprovados);
     }
+
     static void Main()
     {
-            var (nome, faltas, notas, quantidade_cadastros) = cadastro_aluno();
-            var (situacao_nota, situacao_faltas, alunos_reprovados) = relatorio(nome, notas, faltas, quantidade_cadastros);
+        var (nomes, faltas, notas, quantidadeCadastros) = CadastroAluno();
+        var (situacaoNota, situacaoFaltas, alunosReprovados) = Relatorio(nomes, notas, faltas, quantidadeCadastros);
 
-            Console.WriteLine($"\nTotal de alunos reprovados: {alunos_reprovados}");
+        Console.WriteLine($"\nTotal de alunos reprovados: {alunosReprovados}");
     }
 }
