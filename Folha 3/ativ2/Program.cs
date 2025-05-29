@@ -1,6 +1,7 @@
-﻿using System;
+using System;
+using System.IO;
 
-class Aluno
+class Program
 {
     static void Main()
     {
@@ -12,10 +13,11 @@ class Aluno
         {
             Class2.ExibirMenu();
             string opcao = Console.ReadLine();
-
             if (Class2.ProcessarOpcao(opcao))
                 break;
         }
-    }
 
+        File.WriteAllLines("chatlog.txt", Class2.historico);
+        Console.WriteLine("Histórico da conversa salvo em 'chatlog.txt'.");
+    }
 }
