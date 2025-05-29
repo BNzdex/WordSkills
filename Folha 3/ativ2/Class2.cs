@@ -99,7 +99,7 @@ public class Class2
         {
             Console.Write("\nInforme seu nome para prosseguir: ");
             string nome = Console.ReadLine();
-            historico.Add("Usuário: Nome - " + nome);
+            historico.Add("Usuário: Nome: " + nome);
 
             Console.WriteLine($"Obrigado, {nome}. Um atendente estará com você em instantes.");
             Console.WriteLine("Você está na fila de atendimento. Aguarde um momento...");
