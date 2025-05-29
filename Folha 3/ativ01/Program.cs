@@ -1,6 +1,5 @@
-﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using ativ01;
 
 class Aluno
 {
@@ -10,5 +9,8 @@ class Aluno
         var (situacaoNota, situacaoFaltas, alunosReprovados) = Class1.Relatorio(nomes, notas, faltas, quantidadeCadastros);
 
         Console.WriteLine($"\nTotal de alunos reprovados: {alunosReprovados}");
+
+        File.WriteAllLines("logAlunos.txt", Class1.txt);
+        Console.WriteLine("Histórico da conversa salvo em 'logAlunos.txt'");
     }
 }
