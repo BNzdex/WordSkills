@@ -24,8 +24,8 @@ public class Class2
         if (opcao == "1" || opcao.ToUpper() == "INFORMAÇÕES SOBRE PRODUTOS")
         {
             Console.WriteLine("\nTemos os seguites produtos:");
-            Console.WriteLine("1- Notebook: Intel i5, 8GB RAM, SSD 256GB - R$ 3.500,00");
-            Console.WriteLine("2- Monitor: 24'' Full HD, HDMI - R$ 950,00");
+            Console.WriteLine("1- Notebook: Intel i5, 8GB RAM, SSD 256GB - R$ 2.000,00");
+            Console.WriteLine("2- Monitor: 24'' Full HD, HDMI - R$ 650,00");
             Console.WriteLine("3- Teclado: Mecânico RGB, USB - R$ 250,00");
             historico.Add("Bot: Lista de produtos exibida.");
 
@@ -105,10 +105,10 @@ public class Class2
             Console.WriteLine("Você está na fila de atendimento. Aguarde um momento...");
             historico.Add("Bot: Início do atendimento ao usuário.");
 
-            for (int i = 3; i > 0; i--)
+            for (int i = 60; i > 0; i--)
             {
                 Console.WriteLine($"Você será atendido em {i} segundos...");
-                Thread.Sleep(1000000);
+                Thread.Sleep(1000);
             }
 
             Console.WriteLine("Conectando com o atendente...");
