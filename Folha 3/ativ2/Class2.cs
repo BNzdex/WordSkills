@@ -17,9 +17,10 @@ public class Class2
         Console.WriteLine("O que deseja fazer ? ");
     }
 
-    public static bool ProcessarOpcao(string opcao)
+    public static bool ProcessarOpcao(string opcao, string horario)
     {
         historico.Add("Usuário: " + opcao);
+
 
         if (opcao == "1" || opcao.ToUpper() == "INFORMAÇÕES SOBRE PRODUTOS")
         {
@@ -54,6 +55,11 @@ public class Class2
             {
                 Console.WriteLine("Voltando ao menu principal...");
                 historico.Add("Bot: Voltando ao menu principal");
+            }
+            else if (acao_produto > 3)
+            {
+                Console.WriteLine("Opção inválida!");
+                historico.Add("Bot: Opção inválida.");
             }
             else
             {
@@ -105,7 +111,7 @@ public class Class2
             Console.WriteLine("Você está na fila de atendimento. Aguarde um momento...");
             historico.Add("Bot: Início do atendimento ao usuário.");
 
-            for (int i = 60; i > 0; i--)
+            for (int i = 10; i > 0; i--)
             {
                 Console.WriteLine($"Você será atendido em {i} segundos...");
                 Thread.Sleep(1000);
@@ -124,28 +130,13 @@ public class Class2
         else if (opcao == "0" || opcao.ToUpper() == "ENCERRAR CONVERSA")
         {
             Console.WriteLine("Até mais!");
-            historico.Add("Bot: Encerrando conversa.");
+            historico.Add($"Bot: Encerrando conversa\nHorário de encerramento: {horario}");
             return true;
         }
-        else if (opcao.ToUpper().Contains("OLÁ"))
+        else if (opcao.ToUpper().Contains("TCHAU") || opcao.ToUpper().Contains("VALEU"))
         {
-            Console.WriteLine("Olá");
-            historico.Add("Bot: Olá!");
-        }
-        else if (opcao.ToUpper().Contains("BOM DIA"))
-        {
-            Console.WriteLine("Olá, bom dia");
-            historico.Add("Bot: Olá, bom dia!");
-        }
-        else if (opcao.ToUpper().Contains("BOA TARDE"))
-        {
-            Console.WriteLine("Olá, boa tarde");
-            historico.Add("Bot: Olá, boa tarde!");
-        }
-        else if (opcao.ToUpper().Contains("BOA NOITE"))
-        {
-            Console.WriteLine("Olá, boa noite");
-            historico.Add("Bot: Olá, boa noite!");
+            Console.WriteLine("Valeu mano tmj");
+            historico.Add($"Bot: Tchau meu parceiro\nHorário de encerramento: {horario}");
         }
         else
         {
@@ -155,4 +146,55 @@ public class Class2
 
         return false;
     }
+    public static bool comandos_interativos(string opcao, string horario)
+    {
+        string entrada = opcao.ToUpper();
+        int hora = DateTime.Now.Hour;
+
+
+        string periodo = (hora >= 6 && hora < 12) ? "bom dia" :
+                 (hora >= 12 && hora < 18) ? "boa tarde" :
+                 "boa noite";
+
+        if (entrada.Contains("OLÁ") || entrada.Contains("OLA"))
+        {
+            Console.WriteLine($"Olá, {periodo}");
+            historico.Add($"Bot: Olá, {periodo}");
+            return true;
+        }
+        else if (entrada.Contains("BOM DIA"))
+        {
+            Console.WriteLine("Olá, bom dia");
+            historico.Add("Bot: Olá, bom dia!");
+            return true;
+        }
+        else if (entrada.Contains("BOA TARDE"))
+        {
+            Console.WriteLine("Olá, boa tarde");
+            historico.Add("Bot: Olá, boa tarde!");
+            return true;
+        }
+        else if (entrada.Contains("BOA NOITE"))
+        {
+            Console.WriteLine("Olá, boa noite");
+            historico.Add("Bot: Olá, boa noite!");
+            return true;
+        }
+        else if (entrada.Contains("OI"))
+        {
+            Console.WriteLine($"Kole rlk, {periodo}");
+            historico.Add($"Bot: Kole rlk, {periodo}");
+            return true;
+        }
+        else if ((entrada.ToLower().Contains("bom dia") && periodo != "bom dia") ||
+        (entrada.ToLower().Contains("boa tarde") && periodo != "boa tarde") ||
+        (entrada.ToLower().Contains("boa noite") && periodo != "boa noite"))
+        {
+            Console.WriteLine($"Na verdade é {periodo}, pois agora é {horario}");
+        }
+
+        return false;
+    }
+
+
 }
