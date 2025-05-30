@@ -146,44 +146,69 @@ public class Class2
 
         return false;
     }
+    public static void MensagemAleatoria(string periodo)
+    {
+        List<string> respostas = new List<string>
+    {
+        "Tudo bem, por favor escolha uma das opções abaixo",
+        $"{periodo}, fique à vontade para conferir nossos produtos, temos notebooks, teclados e monitores!",
+        $"Oi, {periodo}. Como posso ajudar?",
+        $"Fala comigo meu parceiro, tá querendo o que hoje? Comprar, suporte, atendimento? Fique à vontade para escolher uma opção no menu.",
+        $"{periodo}, fique à vontade para escolher uma das opções do menu",
+    };
+
+        Random rng = new Random();
+        for (int i = respostas.Count - 1; i > 0; i--)
+        {
+            int j = rng.Next(i + 1);
+            string temp = respostas[i];
+            respostas[i] = respostas[j];
+            respostas[j] = temp;
+        }
+
+        string respostaAleatoria = respostas[0];
+        Console.WriteLine(respostaAleatoria);
+        historico.Add("Bot: " + respostaAleatoria);
+    }
+
     public static bool comandos_interativos(string opcao, string horario)
     {
         string entrada = opcao.ToUpper();
         int hora = DateTime.Now.Hour;
 
-
         string periodo = (hora >= 6 && hora < 12) ? "bom dia" :
                  (hora >= 12 && hora < 18) ? "boa tarde" :
                  "boa noite";
 
+
         if (entrada.Contains("OLÁ") || entrada.Contains("OLA"))
         {
             Console.WriteLine($"Olá, {periodo}");
-            historico.Add($"Bot: Olá, {periodo}");
+            MensagemAleatoria(periodo);
             return true;
         }
         else if (entrada.Contains("BOM DIA"))
         {
             Console.WriteLine("Olá, bom dia");
-            historico.Add("Bot: Olá, bom dia!");
+            MensagemAleatoria(periodo);
             return true;
         }
         else if (entrada.Contains("BOA TARDE"))
         {
             Console.WriteLine("Olá, boa tarde");
-            historico.Add("Bot: Olá, boa tarde!");
+            MensagemAleatoria(periodo);
             return true;
         }
         else if (entrada.Contains("BOA NOITE"))
         {
             Console.WriteLine("Olá, boa noite");
-            historico.Add("Bot: Olá, boa noite!");
+            MensagemAleatoria(periodo);
             return true;
         }
         else if (entrada.Contains("OI"))
         {
             Console.WriteLine($"Kole rlk, {periodo}");
-            historico.Add($"Bot: Kole rlk, {periodo}");
+            MensagemAleatoria(periodo);
             return true;
         }
         else if ((entrada.ToLower().Contains("bom dia") && periodo != "bom dia") ||
@@ -191,6 +216,8 @@ public class Class2
         (entrada.ToLower().Contains("boa noite") && periodo != "boa noite"))
         {
             Console.WriteLine($"Na verdade é {periodo}, pois agora é {horario}");
+            MensagemAleatoria(periodo);
+            return true;
         }
 
         return false;
