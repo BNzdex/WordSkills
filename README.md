@@ -30,12 +30,16 @@ O conteúdo visa promover o **aperfeiçoamento técnico**, a **organização efi
 
 ## 👨‍🏫 Instrutores Responsáveis
 
-- **Carlos Pereira**  
+- **Carlos Pereira**
+- 
 [![LinkedIn Carlos Pereira](https://img.shields.io/badge/LinkedIn-Carlos%20Pereira-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-pereira-link-aqui)
+
 [![GitHub Carlos Pereira](https://img.shields.io/badge/GitHub-Carlos%20Pereira-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/capssantos)
 
-- **Raphael Ribeiro**  
+- **Raphael Ribeiro**
+- 
 [![LinkedIn Raphael Ribeiro](https://img.shields.io/badge/LinkedIn-Raphael%20Ribeiro-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raphaelsouzaribeiro/)
+
 [![GitHub Raphael Ribeiro](https://img.shields.io/badge/GitHub-Raphael%20Ribeiro-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/raphaelsouzaribeiro)
 
 
