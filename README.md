@@ -32,9 +32,10 @@ O conteúdo visa promover o **aperfeiçoamento técnico**, a **organização efi
 
 - **Carlos Pereira**
   <p align="left">
-  <a href="https://www.linkedin.com/in/link do linkedin" target="_blank">
+  <a href="https://www.linkedin.com/in/carlos-pereira-link-aqui" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Carlos%20Pereira-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Carlos Pereira"/>
-  </a> 
+  </a>
+<\p>
 [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=30A3DC)](https://github.com/capssantos)
   
 - **Raphael Ribeiro**
