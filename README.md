@@ -37,6 +37,7 @@ O conteúdo visa promover o **aperfeiçoamento técnico**, a **organização efi
   </a> 
   
 - **Raphael Ribeiro**
+  <p align="left">
   <a href="https://www.linkedin.com/in/raphaelsouzaribeiro/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Raphael%20Ribeiro-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Raphael Ribeiro"/>
   </a>
