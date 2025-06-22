@@ -26,8 +26,8 @@ Os exercícios e projetos aqui desenvolvidos têm como objetivo o **aperfeiçoam
 ## 👨‍🏫 Instrutores Responsáveis
 
 - Carlos Pereira
-  [[Linkedin](https://www.linkedin.com/in/raphaelsouzaribeiro/)]
-- Raphael Ribeiro  
+- Raphael Ribeiro
+- [Linkedin](https://www.linkedin.com/in/raphaelsouzaribeiro/)  
 
 ---
 
