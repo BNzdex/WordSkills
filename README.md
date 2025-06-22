@@ -35,6 +35,7 @@ O conteúdo visa promover o **aperfeiçoamento técnico**, a **organização efi
   <a href="https://www.linkedin.com/in/link do linkedin" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Carlos%20Pereira-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Carlos Pereira"/>
   </a> 
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=30A3DC)](https://github.com/capssantos)
   
 - **Raphael Ribeiro**
   <p align="left">
@@ -42,6 +43,7 @@ O conteúdo visa promover o **aperfeiçoamento técnico**, a **organização efi
     <img src="https://img.shields.io/badge/LinkedIn-Raphael%20Ribeiro-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Raphael Ribeiro"/>
   </a>
 </p>
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=30A3DC)](https://docs.github.com/)
 
 ---
 
