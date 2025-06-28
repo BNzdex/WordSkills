@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 public class GerenciadorDeClientes
@@ -7,7 +7,6 @@ public class GerenciadorDeClientes
     private int ultimoId = 0;
     public static string caminhoArquivo = "clientes.json";
 
-    CarregarArquivo();
 
     public void AdicionarCliente()
     {
@@ -37,6 +36,39 @@ public class GerenciadorDeClientes
     }
     public void ListarCadastro()
     {
+        Console.WriteLine("--- Lista de Clientes ---");
+        if (clientes.Count == 0)
+        {
+            Console.WriteLine("Nenhum cliente cadastrado.");
+            return;
+        }
+        else
+        {
+            foreach(var y in clientes)
+            {
+                Console.WriteLine($"ID: {y.Id}\nNome: {y.Nome}\nCPF: {y.Cpf}\nTelefone: {y.Telefone}");
 
+            }
+        }
+    }
+    public void CarregarArquivo()
+    {
+        if (File.Exists(caminhoArquivo))
+        {
+            string json = File.ReadAllText(caminhoArquivo);
+            var dados = JsonSerializer.Deserialize<List<Cliente>>(json);
+            if (dados != null)
+            {
+                clientes = dados;
+                if (clientes.Count > 0)
+                    ultimoId = clientes.Max(c => c.Id);
+            }
+        }
+    }
+
+    private void SalvarNoArquivo()
+    {
+        string json = JsonSerializer.Serialize(clientes, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(caminhoArquivo, json);
     }
 }
