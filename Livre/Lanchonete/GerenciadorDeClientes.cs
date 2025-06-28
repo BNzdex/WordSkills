@@ -7,7 +7,10 @@ public class GerenciadorDeClientes
     private int ultimoId = 0;
     public static string caminhoArquivo = "clientes.json";
 
-
+    public GerenciadorDeClientes()
+    {
+        CarregarArquivo();
+    }
     public void AdicionarCliente()
     {
         Console.Clear();
