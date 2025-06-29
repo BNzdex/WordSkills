@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -34,4 +34,27 @@ public class Cardapio
     new ItemPedido { Nome = "Batata frita", Preco = 10.00, Quantidade = 1 },
     new ItemPedido { Nome = "Refrigerante", Preco = 5.00, Quantidade = 1 }
     };
+}
+public class Json() 
+{
+
+    GerenciadorDeClientes GClientes = new GerenciadorDeClientes();
+    public void SalvarNoArquivo()
+    {
+
+        string json = JsonSerializer.Serialize(GClientes.clientes, new JsonSerializerOptions { WriteIndented = true });
+        File.AppendAllText(GClientes.caminhoArquivo, json);
+    }
+    public void CarregarArquivo()
+    {
+        string json = File.ReadAllText(GClientes.caminhoArquivo);
+        var dados = JsonSerializer.Deserialize<List<Cliente>>(json);
+
+        if (dados != null)
+        {
+            GClientes.clientes = dados;
+            if (GClientes.clientes.Count > 0)
+                GClientes.ultimoId = GClientes.clientes.Max(c => c.Id);
+        }
+    }
 }
