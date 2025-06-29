@@ -56,17 +56,15 @@ public class GerenciadorDeClientes
     }
     public void CarregarArquivo()
     {
-        if (File.Exists(caminhoArquivo))
-        {
-            string json = File.ReadAllText(caminhoArquivo);
-            var dados = JsonSerializer.Deserialize<List<Cliente>>(json);
-            if (dados != null)
-            {
-                clientes = dados;
-                if (clientes.Count > 0)
-                    ultimoId = clientes.Max(c => c.Id);
-            }
-        }
+       string json = File.ReadAllText(caminhoArquivo);
+       var dados = JsonSerializer.Deserialize<List<Cliente>>(json);
+
+       if (dados != null)
+       {
+           clientes = dados;
+           if (clientes.Count > 0)
+                ultimoId = clientes.Max(c => c.Id);
+       }
     }
 
     private void SalvarNoArquivo()
