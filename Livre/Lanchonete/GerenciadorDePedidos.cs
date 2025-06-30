@@ -5,14 +5,11 @@ public class GerenciadorDePedidos
     public List<Pedido> pedidos = new();
     public string caminho_arquivo = "pedidos.json";
     public int ultimoId = 0;
-    public List<ItemPedido> itemPedidos = new();
-    Json json = new Json();
-    GerenciadorDeClientes GerenciadorDeClientes = new GerenciadorDeClientes();
-    public List<ItemPedido> itemDoPedido = new();
+    public GerenciadorDeClientes GerenciadorDeClientes;
 
-    public GerenciadorDePedidos() 
+    public GerenciadorDePedidos(GerenciadorDeClientes gerenciador)
     {
-        json.CarregarArquivo();
+        GerenciadorDeClientes = gerenciador;
     }
 
     public void FazerPedido()
@@ -23,12 +20,12 @@ public class GerenciadorDePedidos
         {
             Console.WriteLine($"ID: {y.Id} | Nome: {y.Nome}");
         }
+
         Console.WriteLine("Informe o ID do cliente: ");
         int opcao = int.Parse(Console.ReadLine());
         ultimoId++;
 
-        List<ItemPedido> itensDoPedido = new(); 
-
+        List<ItemPedido> itensDoPedido = new();
 
         while (true)
         {
@@ -46,7 +43,6 @@ public class GerenciadorDePedidos
             if (cardapio == 0)
                 break;
 
-            
             var itemSelecionado = Cardapio.Itens[cardapio - 1];
             Console.WriteLine("Informe a quantidade: ");
             int quantidade = int.Parse(Console.ReadLine());
@@ -70,32 +66,35 @@ public class GerenciadorDePedidos
             Status = "Pendente"
         };
 
-        pedidos.Add(pedido); 
-        json.SalvarNoArquivo();
+        pedidos.Add(pedido);
+        Console.WriteLine($"Pedido adicionado com sucesso!\nTotal : {pedido.Total}");
     }
 
     public void ListarPedido()
     {
         Console.WriteLine("--- Lista de pedidos ---");
-        foreach(var c in pedidos)
+        foreach (var c in pedidos)
         {
-            Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens}\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus do pedido: {c.Status}");
+            Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens.Count} item(ns)\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus do pedido: {c.Status}");
         }
     }
+
     public void FinalizarPedido()
     {
         Console.WriteLine("--- Lista de pedidos ---");
         foreach (var c in pedidos)
         {
-            Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens}\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus do pedido: {c.Status}");
+            Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens.Count} item(ns)\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus: {c.Status}");
         }
+
         Console.WriteLine("Qual o ID do pedido que você deseja finalizar: ");
         int finalizar = int.Parse(Console.ReadLine());
 
         Pedido pedido = pedidos.Find(c => c.Id == finalizar);
-        pedido.Status = "Concluído";
-
+        if (pedido != null)
+            pedido.Status = "Concluído";
     }
+
     public void PuxarHistorico()
     {
         GerenciadorDeClientes.ListarCadastro();
@@ -104,18 +103,17 @@ public class GerenciadorDePedidos
 
         List<Pedido> pedido = pedidos.FindAll(c => c.Id_cliente == historico);
 
-        if (pedido.Count() > 0)
+        if (pedido.Count > 0)
         {
             Console.WriteLine("--- Lista de pedidos ---");
             foreach (var c in pedido)
             {
-                Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens}\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus do pedido: {c.Status}");
+                Console.WriteLine($"ID: {c.Id}\nID do cliente: {c.Id_cliente}\nItens: {c.Itens.Count} item(ns)\nTotal: {c.Total}\nData do pedido: {c.Data}\nStatus: {c.Status}");
             }
         }
         else
         {
-            Console.WriteLine("Opção inválida, id não correpondente aos nossos registros");
+            Console.WriteLine("Opção inválida, id não correspondente aos nossos registros");
         }
     }
 }
-
