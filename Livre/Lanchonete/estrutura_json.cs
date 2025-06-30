@@ -35,18 +35,24 @@ public class Cardapio
     new ItemPedido { Nome = "Refrigerante", Preco = 5.00, Quantidade = 1 }
     };
 }
-public class Json() 
+public class Json()
 {
 
     GerenciadorDeClientes GClientes = new GerenciadorDeClientes();
+    GerenciadorDePedidos GPedidos = new GerenciadorDePedidos();
     public void SalvarNoArquivo()
     {
-
+        // Salvamento do arquivo Clientes
         string json = JsonSerializer.Serialize(GClientes.clientes, new JsonSerializerOptions { WriteIndented = true });
         File.AppendAllText(GClientes.caminhoArquivo, json);
+
+        // Salvamento do arquivo Pedidos
+        string arquivo = JsonSerializer.Serialize(GPedidos.pedidos, new JsonSerializerOptions { WriteIndented = true });
+        File.AppendAllText(GPedidos.caminho_arquivo, arquivo);
     }
     public void CarregarArquivo()
     {
+        // Carregamento do arquivo Clientes
         string json = File.ReadAllText(GClientes.caminhoArquivo);
         var dados = JsonSerializer.Deserialize<List<Cliente>>(json);
 
@@ -55,6 +61,17 @@ public class Json()
             GClientes.clientes = dados;
             if (GClientes.clientes.Count > 0)
                 GClientes.ultimoId = GClientes.clientes.Max(c => c.Id);
+        }
+
+        // Carregamento do arquivo Pedidos
+        string arquivo = File.ReadAllText(GPedidos.caminho_arquivo);
+        var info = JsonSerializer.Deserialize<List<Pedido>>(arquivo);
+
+        if (info != null)
+        {
+            GPedidos.pedidos = info;
+            if (GPedidos.pedidos.Count > 0)
+                GPedidos.ultimoId = GPedidos.pedidos.Max(c => c.Id);
         }
     }
 }
