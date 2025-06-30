@@ -7,8 +7,12 @@ public class Program
     {
         while (true)
         {
-            var GerenciadorDeClientes = new GerenciadorDeClientes();
-            var GerenciadorDePedidos = new GerenciadorDePedidos();
+            var gerenciadorDeClientes = new GerenciadorDeClientes();
+            var gerenciadorDePedidos = new GerenciadorDePedidos(gerenciadorDeClientes);
+            var manipuladorJson = new ManipuladorJson(gerenciadorDeClientes, gerenciadorDePedidos);
+
+            manipuladorJson.SalvarNoArquivo();
+            manipuladorJson.CarregarArquivo();
 
             Console.WriteLine("--- MENU PRINCIPAL ---");
             Console.WriteLine("1. Cadastrar cliente");
@@ -24,30 +28,31 @@ public class Program
 
             if (opcao.ToUpper().Contains("CADASTRAR") || opcao == "1")
             {
-                GerenciadorDeClientes.AdicionarCliente();
+                gerenciadorDeClientes.AdicionarCliente();
             }
             else if (opcao.ToUpper().Contains("FAZER") || opcao == "2")
             {
-                GerenciadorDePedidos.FazerPedido();
+                gerenciadorDePedidos.FazerPedido();
             }
             else if (opcao.ToUpper().Contains("LISTAR P") || opcao == "3")
             {
-                GerenciadorDePedidos.ListarPedido();
+                gerenciadorDePedidos.ListarPedido();
             }
             else if (opcao.ToUpper().Contains("LISTAR C") || opcao == "4")
             {
-                GerenciadorDeClientes.ListarCadastro();
+                gerenciadorDeClientes.ListarCadastro();
             }
             else if (opcao.ToUpper().Contains("FINALIZAR") || opcao == "5")
             {
-                GerenciadorDePedidos.FinalizarPedido();
+                gerenciadorDePedidos.FinalizarPedido();
             }
             else if (opcao.ToUpper().Contains("HISTÓRICO") || opcao == "6")
             {
-                GerenciadorDePedidos.PuxarHistorico();
+                gerenciadorDePedidos.PuxarHistorico();
             }
             else if (opcao.ToUpper().Contains("SAIR") || opcao == "7")
             {
+                manipuladorJson.SalvarNoArquivo();
                 break;
             }
             else
@@ -58,7 +63,6 @@ public class Program
         }
     }
 }
-
 
 
 
