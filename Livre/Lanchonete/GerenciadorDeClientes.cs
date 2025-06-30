@@ -47,7 +47,7 @@ public class GerenciadorDeClientes
         }
         else
         {
-            foreach(var y in clientes)
+            foreach (var y in clientes)
             {
                 Console.WriteLine($"ID: {y.Id}\nNome: {y.Nome}\nCPF: {y.Cpf}\nTelefone: {y.Telefone}");
 
