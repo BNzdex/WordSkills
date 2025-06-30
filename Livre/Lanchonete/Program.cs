@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+
 public class Program
 {
     public static void Main()
@@ -7,6 +8,7 @@ public class Program
         while (true)
         {
             var GerenciadorDeClientes = new GerenciadorDeClientes();
+            var GerenciadorDePedidos = new GerenciadorDePedidos();
 
             Console.WriteLine("--- MENU PRINCIPAL ---");
             Console.WriteLine("1. Cadastrar cliente");
@@ -26,11 +28,11 @@ public class Program
             }
             else if (opcao.ToUpper().Contains("FAZER") || opcao == "2")
             {
-                Console.WriteLine("Aplicar função para solocitar pedido");
+                GerenciadorDePedidos.FazerPedido();
             }
             else if (opcao.ToUpper().Contains("LISTAR P") || opcao == "3")
             {
-                Console.WriteLine("Aplicar função para listar pedidos");
+                GerenciadorDePedidos.ListarPedido();
             }
             else if (opcao.ToUpper().Contains("LISTAR C") || opcao == "4")
             {
@@ -38,11 +40,11 @@ public class Program
             }
             else if (opcao.ToUpper().Contains("FINALIZAR") || opcao == "5")
             {
-                Console.WriteLine("Aplicar função para finalizar pedido");
+                GerenciadorDePedidos.FinalizarPedido();
             }
             else if (opcao.ToUpper().Contains("HISTÓRICO") || opcao == "6")
             {
-                Console.WriteLine("Aplicar função para puxar historico do cliente");
+                GerenciadorDePedidos.PuxarHistorico();
             }
             else if (opcao.ToUpper().Contains("SAIR") || opcao == "7")
             {
@@ -56,7 +58,6 @@ public class Program
         }
     }
 }
-
 
 
 
