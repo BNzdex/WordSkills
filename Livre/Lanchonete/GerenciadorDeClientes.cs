@@ -5,12 +5,7 @@ public class GerenciadorDeClientes
     public List<Cliente> clientes = new();
     public int ultimoId = 0;
     public string caminhoArquivo = "clientes.json";
-    Json Json = new Json();
 
-    public GerenciadorDeClientes()
-    {
-        Json.CarregarArquivo();
-    }
     public void AdicionarCliente()
     {
         Console.Clear();
@@ -34,9 +29,9 @@ public class GerenciadorDeClientes
         };
 
         clientes.Add(cliente);
-        Json.SalvarNoArquivo();
         Console.WriteLine("Cliente adicionado com sucesso!");
     }
+
     public void ListarCadastro()
     {
         Console.WriteLine("--- Lista de Clientes ---");
@@ -45,13 +40,10 @@ public class GerenciadorDeClientes
             Console.WriteLine("Nenhum cliente cadastrado.");
             return;
         }
-        else
-        {
-            foreach (var y in clientes)
-            {
-                Console.WriteLine($"ID: {y.Id}\nNome: {y.Nome}\nCPF: {y.Cpf}\nTelefone: {y.Telefone}");
 
-            }
+        foreach (var y in clientes)
+        {
+            Console.WriteLine($"ID: {y.Id}\nNome: {y.Nome}\nCPF: {y.Cpf}\nTelefone: {y.Telefone}");
         }
     }
 }
